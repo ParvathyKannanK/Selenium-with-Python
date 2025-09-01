@@ -20,7 +20,7 @@ Tech & Versions
 -	Selenium 4.x
 -	webdriver-manager 4.x
 -	pytest 8.x
--	
+  
 Project Structure
 AutomatedTests-Selenium/
 ├─ pages/
