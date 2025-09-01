@@ -126,6 +126,7 @@ File: tests/test_logout_pom.py
 ---
 
 Page Object Model (POM)
+
 Keep selectors & low-level actions inside pages, so tests read like intent.
 •	BasePage: shared waits & helpers (wait_visible, click, type, badge_count, etc.)
 •	LoginPage: open(), login(user, pass), error helpers
