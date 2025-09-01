@@ -56,6 +56,7 @@ Running Tests
 All tests: pytest -q
 One test file: pytest tests/test_cart_pom.py -q
 One test function: pytest tests/test_cart_pom.py::test_add_two_items_and_remove_all_via_pom -q
+HTML report: pytest --html=report.html --self-contained-html
 
 What the Tests Do
 
