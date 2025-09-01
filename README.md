@@ -1,27 +1,36 @@
-Selenium + Python Automated Tests (POM) — SauceDemo
+Selenium + Python Automated Tests (POM) — SauceDemo  
 
-A clean, reproducible Selenium WebDriver + Python + pytest suite that tests the e-commerce demo site [saucedemo.com](https://www.saucedemo.com).
+A clean, reproducible Selenium WebDriver + Python + pytest** suite that tests the e-commerce demo site [saucedemo.com] (https://www.saucedemo.com).  
 
-Covers
--	Login (success & failure)
--	Add to Cart (single & multiple items)
--	Cart validation (names, badge)
--	Logout
--	Page Object Model (POM) for maintainability
+---
+
+Features Covered
+- Login (success & failure)  
+- Add to Cart (single & multiple items)  
+- Cart validation (names, badge)  
+- Logout  
+- Page Object Model (POM) for maintainability  
+
+---
 
 Highlights
--	Stable locators using `data-test` attributes
--	Explicit waits + JS click fallbacks to avoid animation flakiness
--	Pytest fixtures (`conftest.py`) for a shared, headless-ready Chrome setup
--	CI-friendly structure
+- Stable locators using `data-test` attributes  
+- Explicit waits + JS click fallbacks to avoid animation flakiness  
+- Pytest fixtures (`conftest.py`) for a shared, headless-ready Chrome setup  
+- CI-friendly structure  
+
+---
 
 Tech & Versions
--	Python 3.x
--	Selenium 4.x
--	webdriver-manager 4.x
--	pytest 8.x
-  
+- Python 3.x  
+- Selenium 4.x  
+- webdriver-manager 4.x  
+- pytest 8.x  
+
+---
+
 Project Structure
+
 AutomatedTests-Selenium/
 ├─ pages/
 │  ├─ __init__.py
@@ -39,66 +48,81 @@ AutomatedTests-Selenium/
 ├─ pytest.ini
 └─ README.md
 
+---
+
 Setup
+
+# 1) Create & activate virtual environment
 python -m venv .venv
+
 # Windows
 .\.venv\Scripts\activate
 # macOS/Linux
 source .venv/bin/activate
 
-2)	Install dependencies
+# 2) Install dependencies
 pip install -r requirements.txt
 # or
 pip install selenium webdriver-manager pytest pytest-html
+
  
 Running Tests
-All tests: pytest -q
-One test file: pytest tests/test_cart_pom.py -q
-One test function: pytest tests/test_cart_pom.py::test_add_two_items_and_remove_all_via_pom -q
-HTML report: pytest --html=report.html --self-contained-html
+
+Run all tests : pytest -q
+Run one test file: pytest tests/test_cart_pom.py -q
+Run one test function: pytest tests/test_cart_pom.py::test_add_two_items_and_remove_all_via_pom -q
+Generate HTML report: pytest --html=report.html --self-contained-html
 
 What the Tests Do
 
-1)	Login (success & failure)
-•	Success: logs in with standard_user / secret_sauce, asserts Products title.
-•	Failure: uses wrong password, asserts error text appears ([data-test='error']).
-Key locators
-•	Username: #user-name
-•	Password: #password
-•	Login button: #login-button
-•	Error box: [data-test='error']
+1) Login (success & failure)
+   
+Success: logs in with standard_user / secret_sauce, asserts Products title.
+Failure: wrong password, asserts error text appears ([data-test='error']).
+
+Key locators:
+Username: #user-name
+Password: #password
+Login button: #login-button
+Error box: [data-test='error']
 File: tests/test_login_pom.py
 
-2)	Inventory (add/remove single item)
-•	Adds Sauce Labs Backpack, asserts cart badge = 1
-•	Removes it, asserts badge disappears
-Key locators
-•	Add: button[data-test='add-to-cart-sauce-labs-backpack']
-•	Remove: button[data-test='remove-sauce-labs-backpack']
-•	Badge: .shopping_cart_badge
+2) Inventory (add/remove single item)
+
+Adds Sauce Labs Backpack, asserts cart badge = 1
+Removes it, asserts badge disappears
+
+Key locators:
+Add: button[data-test='add-to-cart-sauce-labs-backpack']
+Remove: button[data-test='remove-sauce-labs-backpack']
+Badge: .shopping_cart_badge
 File: tests/test_inventory_pom.py
 
-3)	Cart (two items + validation)
-•	Adds Backpack + Bike Light
-•	Asserts badge = 2
-•	Opens cart, asserts both item names present
-•	Removes both, asserts badge disappears
-Key locators
-•	Cart link: a.shopping_cart_link
-•	Item names: .inventory_item_name
-•	Badge: .shopping_cart_badge
+3) Cart (two items + validation)
+
+Adds Backpack + Bike Light
+Asserts badge = 2
+Opens cart, asserts both item names present
+Removes both, asserts badge disappears
+
+Key locators:
+Cart link: a.shopping_cart_link
+Item names: .inventory_item_name
+Badge: .shopping_cart_badge
 File: tests/test_cart_pom.py
 
-4)	Logout
-•	Opens burger menu, clicks Logout
-•	Asserts the login button is visible again
-Key locators
-•	Menu button: #react-burger-menu-btn
-•	Logout link: #logout_sidebar_link
+4) Logout
+   
+Opens burger menu, clicks Logout
+Asserts login button is visible again
+
+Key locators:
+Menu button: #react-burger-menu-btn
+Logout link: #logout_sidebar_link
 File: tests/test_logout_pom.py
 
 Page Object Model (POM)
-We keep selectors & low-level actions inside pages, so tests read like intent.
+Keep selectors & low-level actions inside pages, so tests read like intent.
 •	BasePage: shared waits & helpers (wait_visible, click, type, badge_count, etc.)
 •	LoginPage: open(), login(user, pass), error helpers
 •	InventoryPage: add_item(slug), remove_item(slug), wait_badge_equals(n), open_cart(), open_menu(), logout()
