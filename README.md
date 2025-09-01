@@ -63,13 +63,17 @@ source .venv/bin/activate
 pip install -r requirements.txt
 or
 pip install selenium webdriver-manager pytest pytest-html
- 
+
+---
+
 Running Tests
 
 Run all tests : pytest -q
 Run one test file: pytest tests/test_cart_pom.py -q
 Run one test function: pytest tests/test_cart_pom.py::test_add_two_items_and_remove_all_via_pom -q
 Generate HTML report: pytest --html=report.html --self-contained-html
+
+---
 
 What the Tests Do
 
@@ -119,6 +123,8 @@ Menu button: #react-burger-menu-btn
 Logout link: #logout_sidebar_link
 File: tests/test_logout_pom.py
 
+---
+
 Page Object Model (POM)
 Keep selectors & low-level actions inside pages, so tests read like intent.
 •	BasePage: shared waits & helpers (wait_visible, click, type, badge_count, etc.)
@@ -160,9 +166,13 @@ def driver():
     yield drv
     drv.quit()
 
+---
+
 Results (sample)
 ....
 4 passed in 20.7s
+
+---
 
 Next Ideas
 •	Add Checkout flow (“THANK YOU FOR YOUR ORDER!”)
