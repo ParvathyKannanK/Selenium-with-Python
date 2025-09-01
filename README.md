@@ -1,6 +1,6 @@
 Selenium + Python Automated Tests (POM) — SauceDemo
 
-A clean, reproducible Selenium WebDriver + Python + pytest suite that tests the e-commerce demo site [https://www.saucedemo.com] (https://www.saucedemo.com).
+A clean, reproducible Selenium WebDriver + Python + pytest suite that tests the e-commerce demo site [saucedemo.com](https://www.saucedemo.com).
 
 Covers
 -	Login (success & failure)
@@ -40,7 +40,6 @@ AutomatedTests-Selenium/
 └─ README.md
 
 Setup
-1)	Create & activate virtual environment
 python -m venv .venv
 # Windows
 .\.venv\Scripts\activate
@@ -149,6 +148,8 @@ Next Ideas
 •	Parallel runs (pytest -n auto with pytest-xdist)
 •	Allure or richer HTML reporting
 •	GitHub Actions workflow to run on every push (upload report.html)
+
+This project was created to practice and demonstrate professional-grade test automation skills with Selenium, Python, and PyTest, using industry patterns such as POM and CI-ready workflows.
 
 
 
