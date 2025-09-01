@@ -52,19 +52,17 @@ AutomatedTests-Selenium/
 
 Setup
 
-# 1) Create & activate virtual environment
+1)	Create & activate virtual environment
 python -m venv .venv
-
-# Windows
+Windows
 .\.venv\Scripts\activate
-# macOS/Linux
+macOS/Linux
 source .venv/bin/activate
 
-# 2) Install dependencies
+2)	Install dependencies
 pip install -r requirements.txt
-# or
+or
 pip install selenium webdriver-manager pytest pytest-html
-
  
 Running Tests
 
